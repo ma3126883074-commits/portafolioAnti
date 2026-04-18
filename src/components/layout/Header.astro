@@ -1,0 +1,48 @@
+---
+import Button from '../ui/Button.astro';
+
+const navItems = [
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Sobre mí', href: '#sobre-mi' },
+  { name: 'Proyectos', href: '#proyectos' },
+  { name: 'Experiencia', href: '#experiencia' },
+  { name: 'Formación', href: '#formacion' },
+];
+---
+
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-dark-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo / Name -->
+      <a href="#inicio" class="text-2xl font-bold tracking-tighter text-slate-900 dark:text-white">
+        Portfolio<span class="text-primary-600">.</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8">
+        <ul class="flex space-x-8">
+          {navItems.map(item => (
+            <li>
+              <a 
+                href={item.href} 
+                class="text-sm font-medium text-slate-600 hover:text-primary-600 dark:text-slate-300 dark:hover:text-primary-500 transition-colors"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <Button href="#contacto" variant="primary" className="!px-5 !py-2 !text-sm">
+          Contactar
+        </Button>
+      </nav>
+
+      <!-- Mobile Menu Button (Hamburger) -->
+      <button class="md:hidden p-2 text-slate-600 dark:text-slate-300">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>

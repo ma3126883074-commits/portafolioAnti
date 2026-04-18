@@ -1,0 +1,76 @@
+---
+import SectionTitle from '../ui/SectionTitle.astro';
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+
+const projects = [
+  {
+    title: 'E-commerce Platform',
+    description: 'Plataforma completa de comercio electrónico con carrito, pagos y panel de administración.',
+    image: 'https://via.placeholder.com/600x400/1e293b/ffffff?text=E-commerce',
+    tags: ['Next.js', 'Tailwind', 'Stripe', 'MongoDB'],
+    link: '#',
+    github: '#'
+  },
+  {
+    title: 'Task Management App',
+    description: 'Aplicación web para la gestión de tareas y proyectos con tableros Kanban.',
+    image: 'https://via.placeholder.com/600x400/1e293b/ffffff?text=Task+App',
+    tags: ['React', 'Redux', 'Node.js', 'PostgreSQL'],
+    link: '#',
+    github: '#'
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'Portafolio personal diseñado con un enfoque minimalista y alto rendimiento.',
+    image: 'https://via.placeholder.com/600x400/1e293b/ffffff?text=Portfolio',
+    tags: ['Astro', 'Tailwind CSS'],
+    link: '#',
+    github: '#'
+  }
+];
+---
+
+<section id="proyectos" class="py-20 bg-white dark:bg-dark-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionTitle title="Proyectos Destacados" subtitle="Una selección de mis trabajos recientes y proyectos personales." />
+    
+    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {projects.map(project => (
+        <Card className="flex flex-col h-full">
+          <div class="h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+            {/* Placeholder for project image */}
+            <img src={project.image} alt={project.title} class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">{project.title}</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-6 flex-grow">{project.description}</p>
+            
+            <div class="flex flex-wrap gap-2 mb-6">
+              {project.tags.map(tag => (
+                <span class="px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 text-xs font-semibold rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <div class="flex gap-4 mt-auto pt-4 border-t border-slate-100 dark:border-slate-800">
+              <a href={project.link} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300">
+                Ver Demo &rarr;
+              </a>
+              <a href={project.github} target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">
+                Código Fuente
+              </a>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+    
+    <div class="mt-12 text-center">
+      <Button href="https://github.com" variant="outline">
+        Ver más en GitHub
+      </Button>
+    </div>
+  </div>
+</section>
